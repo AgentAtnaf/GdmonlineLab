@@ -12,6 +12,7 @@ public class Loginmanager : MonoBehaviour
     public TMP_InputField passwordInputField;
     public List<uint>Alternativeprefab;
     private string hostPassword;
+    public Transform[] spawnPoints;
     private bool isApproveConnection = false;
     public GameObject loginpanel;
     public GameObject leavebutton;
@@ -110,8 +111,8 @@ public class Loginmanager : MonoBehaviour
         response.CreatePlayerObject = true;
 
         // The Prefab hash value of the NetworkPrefab, if null the default NetworkManager player Prefab is used
-        response.PlayerPrefabHash = Alternativeprefab[SkinIdindex];
-
+        // response.PlayerPrefabHash = Alternativeprefab[SkinIdindex];
+        response.PlayerPrefabHash = null;
         // Position to spawn the player object (if null it uses default of Vector3.zero)
         response.Position = Vector3.zero;
 
@@ -135,7 +136,7 @@ public class Loginmanager : MonoBehaviour
         string userName = userNameInputField.text;
         string clientPassword = passwordInputField.text;
         string SkinId =  SkinIDInputField.text;
-        string[] inputField = { userName,clientPassword,SkinId}
+        string[] inputField = { userName,clientPassword,SkinId};
 
         // Combine user name and password into a single string
         string combinedData = userName + "," + clientPassword;
@@ -166,20 +167,21 @@ public class Loginmanager : MonoBehaviour
 
         if (clientId == NetworkManager.Singleton.LocalClientId)
         {
-            spawnPos = new Vector3(-1f, 2f, 3f);
-            spawnRot = Quaternion.Euler(0f, 123f, 0f);
+            // Randomly select a spawn point from the array
+            Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            spawnPos = randomSpawnPoint.position;
+            spawnRot = randomSpawnPoint.rotation;
         }
         else
         {
             switch (NetworkManager.Singleton.ConnectedClients.Count)
             {
-                case 1:
-                    spawnPos = new Vector3(0f, 0f, 0f);
-                    spawnRot = Quaternion.Euler(0f, 110f, 0f);
-                    break;
-                case 2:
-                    spawnPos = new Vector3(2f, 4f, 3f);
-                    spawnRot = Quaternion.Euler(1f, 120f, 3f);
+                default:
+                    // Handle cases where the player count is greater than 3
+                    Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                    spawnPos = randomSpawnPoint.position;
+                    spawnRot = randomSpawnPoint.rotation;
+                    spawnRot = Quaternion.Euler(0f, 0f, 0f);
                     break;
             }
         }
