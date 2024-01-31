@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224130951485110974, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000061035156
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 224166536479716514, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -621,7 +621,7 @@ Transform:
   m_GameObject: {fileID: 32869901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 0.8, z: 25.5}
+  m_LocalPosition: {x: -0.41, y: 0.8, z: 12.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1209,7 +1209,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1011070893}
+        m_TargetAssemblyTypeName: Loginmanager, Assembly-CSharp
+        m_MethodName: OnDropdownValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &341465504
 MonoBehaviour:
@@ -1652,7 +1664,7 @@ Transform:
   m_GameObject: {fileID: 575500739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.95, y: 0.12, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2273,7 +2285,7 @@ Transform:
   m_GameObject: {fileID: 865854139}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.51, y: 0.029, z: -0.4}
+  m_LocalPosition: {x: 7.51, y: 0.029, z: 5.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2545,7 +2557,8 @@ MonoBehaviour:
   userNameInputField: {fileID: 1783566737}
   SkinIDInputField: {fileID: 0}
   passwordInputField: {fileID: 539177468}
-  Alternativeprefab: 3e2c7c8bb9f3e4df
+  skinDropdown: {fileID: 341465503}
+  selectedPrefabHash: 0
   spawnPoints:
   - {fileID: 575500740}
   - {fileID: 865854140}
@@ -3511,7 +3524,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1910944600}
-    PlayerPrefab: {fileID: 105368225488607173, guid: 3e56af84b25c7cd4d9d2d91c233a7415, type: 3}
+    PlayerPrefab: {fileID: 374250349349496990, guid: bb51050ac1434ad4f96336251ca97b3a, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 5cbfa2dd6ce78fd419082382d733f09c, type: 2}

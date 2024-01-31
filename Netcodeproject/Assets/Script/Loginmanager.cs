@@ -10,7 +10,9 @@ public class Loginmanager : MonoBehaviour
     public TMP_InputField userNameInputField;
     public TMP_InputField SkinIDInputField;
     public TMP_InputField passwordInputField;
-    public List<uint>Alternativeprefab;
+    public TMP_Dropdown skinDropdown;
+    private Dictionary<int, uint> dropdownToPrefabHashMap = new Dictionary<int, uint>();
+    public uint selectedPrefabHash;
     private string hostPassword;
     public Transform[] spawnPoints;
     private bool isApproveConnection = false;
@@ -23,9 +25,10 @@ public class Loginmanager : MonoBehaviour
         isApproveConnection = !isApproveConnection;
         return isApproveConnection;
     }
-
     void Start()
     {
+        PopulateDropdownOptions();
+        PopulateDropdownToPrefabHashMap();
         NetworkManager.Singleton.OnServerStarted += HandleServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback += HandleClientConnected;
         NetworkManager.Singleton.OnClientDisconnectCallback += HandleClientDisconnected;
@@ -111,8 +114,8 @@ public class Loginmanager : MonoBehaviour
         response.CreatePlayerObject = true;
 
         // The Prefab hash value of the NetworkPrefab, if null the default NetworkManager player Prefab is used
-        // response.PlayerPrefabHash = Alternativeprefab[SkinIdindex];
-        response.PlayerPrefabHash = null;
+        // response.PlayerPrefabHash = null;
+        response.PlayerPrefabHash = selectedPrefabHash;
         // Position to spawn the player object (if null it uses default of Vector3.zero)
         response.Position = Vector3.zero;
 
@@ -131,21 +134,58 @@ public class Loginmanager : MonoBehaviour
         response.Pending = false;
     }
 
+
     public void Client()
     {
         string userName = userNameInputField.text;
         string clientPassword = passwordInputField.text;
-        string SkinId =  SkinIDInputField.text;
-        string[] inputField = { userName,clientPassword,SkinId};
 
-        // Combine user name and password into a single string
-        string combinedData = userName + "," + clientPassword;
+        // Combine user name, password, and selectedPrefabHash into a single string
+        string combinedData = userName + "," + clientPassword + "," + selectedPrefabHash.ToString() + ",";
 
         // Set the client's data
         NetworkManager.Singleton.NetworkConfig.ConnectionData = System.Text.Encoding.ASCII.GetBytes(combinedData);
 
         NetworkManager.Singleton.StartClient();
         Debug.Log("start client " + combinedData);
+    }
+
+    private void PopulateDropdownOptions()
+    {
+        // Clear existing options
+        skinDropdown.ClearOptions();
+
+        // Replace this with your actual dropdown options
+        List<string> dropdownOptions = new List<string> { "Red", "Green", "Blue" };
+
+        // Add options to the dropdown
+        skinDropdown.AddOptions(dropdownOptions);
+    }
+    private void PopulateDropdownToPrefabHashMap()
+    {
+        // Replace these values with your actual prefab hashes
+        dropdownToPrefabHashMap.Add(0,1217761731);
+        dropdownToPrefabHashMap.Add(1,2044945768);
+        dropdownToPrefabHashMap.Add(2,1580094032);
+
+        // Add more mappings as needed
+    }
+     public void OnDropdownValueChanged()
+    {
+        // Get the selected index from the dropdown
+        int selectedIndex = skinDropdown.value;
+
+        // Check if the selected index is within the bounds of the mapping
+        if (dropdownToPrefabHashMap.ContainsKey(selectedIndex))
+        {
+            // Assign the selected prefab hash to a field for later use
+            selectedPrefabHash = dropdownToPrefabHashMap[selectedIndex];
+        }
+        else
+        {
+            // Handle an invalid index if needed
+            Debug.LogError("Invalid dropdown index");
+        }
     }
 
     public bool ApproveConnection(string clientData, string hostPassword, string hostName)
