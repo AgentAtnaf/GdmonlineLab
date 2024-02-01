@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2180933773
+  GlobalObjectIdHash: 1217761731
   InScenePlacedSourceGlobalObjectIdHash: 2180933773
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseUnreliableDeltas: 0
   SyncPositionX: 1
-  SyncPositionY: 0
+  SyncPositionY: 1
   SyncPositionZ: 1
   SyncRotAngleX: 1
   SyncRotAngleY: 1
@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 7064068637085885834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.493, y: 1.4339999, z: 0}
+  m_LocalPosition: {x: 0.493, y: 3.484, z: 0}
   m_LocalScale: {x: 0.42418, y: 0.13245, z: 0.6278227}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -263,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 8806374476231457496}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.909, z: 0}
+  m_LocalPosition: {x: 0, y: 2.959, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

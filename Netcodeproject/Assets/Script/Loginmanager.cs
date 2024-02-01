@@ -103,19 +103,25 @@ public class Loginmanager : MonoBehaviour
             string clientData = System.Text.Encoding.ASCII.GetString(connectionData, 0, byteLength);
             string hostData = userNameInputField.text;
             string hostDatapassword = hostPassword;  // stored host password
+            string[] data = clientData.Split(',');
 
             // Check the values
             Debug.Log("Client data: " + clientData);
             Debug.Log("Host data: " + hostDatapassword);
 
             isApproved = ApproveConnection(clientData, hostDatapassword, hostData);
+            response.PlayerPrefabHash = uint.Parse(data[2]);
         }
+        if (clientId == NetworkManager.Singleton.LocalClientId)
+        {
+            response.PlayerPrefabHash = selectedPrefabHash;
+        }
+        Debug.Log("selectedPrefabHash = " + selectedPrefabHash);
         response.Approved = isApproved;
         response.CreatePlayerObject = true;
 
         // The Prefab hash value of the NetworkPrefab, if null the default NetworkManager player Prefab is used
         // response.PlayerPrefabHash = null;
-        response.PlayerPrefabHash = selectedPrefabHash;
         // Position to spawn the player object (if null it uses default of Vector3.zero)
         response.Position = Vector3.zero;
 
@@ -141,7 +147,7 @@ public class Loginmanager : MonoBehaviour
         string clientPassword = passwordInputField.text;
 
         // Combine user name, password, and selectedPrefabHash into a single string
-        string combinedData = userName + "," + clientPassword + "," + selectedPrefabHash.ToString() + ",";
+        string combinedData = userName + "," + clientPassword + "," + selectedPrefabHash.ToString();
 
         // Set the client's data
         NetworkManager.Singleton.NetworkConfig.ConnectionData = System.Text.Encoding.ASCII.GetBytes(combinedData);
