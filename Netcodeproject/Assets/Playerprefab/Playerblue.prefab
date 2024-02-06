@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3472913929
+  GlobalObjectIdHash: 1580094032
   InScenePlacedSourceGlobalObjectIdHash: 2022834040
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -70,6 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5050dce6437a4174bbc302f490d1bab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  namePrefab: {fileID: 603351325977892307, guid: bca911804b0973542aa40b51e8cde00e, type: 3}
+  namelabel: {fileID: 603351325977892307, guid: bca911804b0973542aa40b51e8cde00e, type: 3}
   speed: 5
   rotationspeed: 10
 --- !u!54 &6132994455156684915

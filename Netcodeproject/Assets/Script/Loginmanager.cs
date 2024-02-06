@@ -29,6 +29,7 @@ public class Loginmanager : MonoBehaviour
     {
         PopulateDropdownOptions();
         PopulateDropdownToPrefabHashMap();
+        selectedPrefabHash = 1217761731;
         NetworkManager.Singleton.OnServerStarted += HandleServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback += HandleClientConnected;
         NetworkManager.Singleton.OnClientDisconnectCallback += HandleClientDisconnected;
@@ -102,6 +103,7 @@ public class Loginmanager : MonoBehaviour
         {
             string clientData = System.Text.Encoding.ASCII.GetString(connectionData, 0, byteLength);
             string hostData = userNameInputField.text;
+            // string Clientname = userNameInputField.text;
             string hostDatapassword = hostPassword;  // stored host password
             string[] data = clientData.Split(',');
 
