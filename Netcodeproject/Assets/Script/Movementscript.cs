@@ -9,12 +9,14 @@ public class Movementscript : NetworkBehaviour
    public TMP_Text namePrefab;
    public TMP_Text namelabel;
    public TMP_InputField playerNameInput;
+   public Material materialToChange;
    Rigidbody rb;
    public float speed = 5.0f;
    public float rotationspeed = 10.0f;
    private NetworkVariable<int> posX = new NetworkVariable<int>(0, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Owner);
+   private bool isColorChanged = false;
    private void FixedUpdate()
    {
         if(IsOwner)
@@ -84,6 +86,7 @@ public class Movementscript : NetworkBehaviour
    }
    void Update()
    {
+      HandleKeyboardInput();
       Vector3 namelabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 4f, 0));
       namelabel.text = gameObject.name;
       namelabel.transform.position = namelabelPos;
@@ -103,4 +106,39 @@ public class Movementscript : NetworkBehaviour
       if(namelabel != null) Destroy(namelabel.gameObject);
       base.OnDestroy();
    }
+   private void HandleKeyboardInput()
+    {
+         // Debug.Log("funtion enter");
+        if (IsServer)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+               Debug.Log("Material change color");
+                ChangeMaterialColor();
+            }
+        }
+    }
+    private void ChangeMaterialColor()
+    {
+        if (materialToChange != null)
+        {
+            if (isColorChanged)
+            {
+                // If color is changed, return to white
+                materialToChange.color = Color.white;
+            }
+            else
+            {
+                // If color is not changed, change to blue
+                materialToChange.color = Color.red;
+            }
+
+            // Toggle the state
+            isColorChanged = !isColorChanged;
+        }
+        else
+        {
+            Debug.LogError("Material reference is null. Please assign a material to 'materialToChange'.");
+        }
+    }
 }

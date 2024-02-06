@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1217761731
+  GlobalObjectIdHash: 652044583
   InScenePlacedSourceGlobalObjectIdHash: 2180933773
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -72,6 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namePrefab: {fileID: 603351325977892307, guid: bca911804b0973542aa40b51e8cde00e, type: 3}
   namelabel: {fileID: 603351325977892307, guid: bca911804b0973542aa40b51e8cde00e, type: 3}
+  playerNameInput: {fileID: 0}
+  materialToChange: {fileID: 2100000, guid: a6eb306649482dc4f9942553b873933e, type: 2}
   speed: 5
   rotationspeed: 10
 --- !u!54 &2784088497158852181
@@ -194,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a6eb306649482dc4f9942553b873933e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
