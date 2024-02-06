@@ -19,6 +19,9 @@ public class Movementscript : NetworkBehaviour
    private NetworkVariable<bool> isColorChanged = new NetworkVariable<bool>(false, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Owner);     
+   private NetworkVariable<Color> materialColor = new NetworkVariable<Color>(Color.white, 
+        NetworkVariableReadPermission.Everyone, 
+        NetworkVariableWritePermission.Owner);
    // private bool isColorChanged = false;
    private void FixedUpdate()
    {
@@ -89,26 +92,43 @@ public class Movementscript : NetworkBehaviour
    }
    void Update()
    {
-      HandleKeyboardInput();
-      Vector3 namelabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 4f, 0));
-      namelabel.text = gameObject.name;
-      namelabel.transform.position = namelabelPos;
-      if(IsOwner)
-      {
-         posX.Value = (int)System.Math.Ceiling(transform.position.x);
-      }
-      Upadteplayerinfo();
+        HandleKeyboardInput();
+        Vector3 namelabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 4f, 0));
+        namelabel.text = gameObject.name;
+        namelabel.transform.position = namelabelPos;
+        if(IsOwner)
+        {
+            posX.Value = (int)System.Math.Ceiling(transform.position.x);
+        }
+        Upadteplayerinfo();
+        UpdateMaterialColor();
    }
+
+    private void UpdateMaterialColor()
+    {
+        if (materialToChange != null)
+        {
+            // Set the material color to the synchronized value
+            materialToChange.color = materialColor.Value;
+        }
+        else
+        {
+            Debug.LogError("Material reference is null. Please assign a material to 'materialToChange'.");
+        }
+    }
+
    private void Upadteplayerinfo()
    {
       if(IsOwnedByServer) { namelabel.text = playerNameA.Value.ToString();}
       else{namelabel.text = playerNameB.Value.ToString();}
    }
+
    public override void OnDestroy()
    {
       if(namelabel != null) Destroy(namelabel.gameObject);
       base.OnDestroy();
    }
+
    private void HandleKeyboardInput()
     {
          if (IsOwner)
@@ -122,25 +142,27 @@ public class Movementscript : NetworkBehaviour
     }
     private void ChangeMaterialColor()
     {
-         if (materialToChange != null)
-         {
+        if (materialToChange != null)
+        {
+            Color newColor;
+
             if (isColorChanged.Value)
             {
-                  // If color is changed, return to white
-                  materialToChange.color = Color.white;
+                newColor = Color.white;
             }
             else
             {
-                  // If color is not changed, change to blue
-                  materialToChange.color = Color.red;
+                newColor = Color.red;
             }
+            materialToChange.color = newColor;
+            materialColor.Value = newColor;
 
-            // Toggle the state and synchronize it across the network
+            // Toggle the state
             isColorChanged.Value = !isColorChanged.Value;
-         }
-         else
-         {
+        }
+        else
+        {
             Debug.LogError("Material reference is null. Please assign a material to 'materialToChange'.");
-         }
+        }
     }
 }
