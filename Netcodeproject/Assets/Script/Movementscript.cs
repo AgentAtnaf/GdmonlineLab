@@ -16,18 +16,21 @@ public class Movementscript : NetworkBehaviour
    private NetworkVariable<int> posX = new NetworkVariable<int>(0, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Owner);
-   private bool isColorChanged = false;
+   private NetworkVariable<bool> isColorChanged = new NetworkVariable<bool>(false, 
+        NetworkVariableReadPermission.Everyone, 
+        NetworkVariableWritePermission.Owner);     
+   // private bool isColorChanged = false;
    private void FixedUpdate()
    {
         if(IsOwner)
-    {
-      float translation = Input.GetAxis("Vertical") * speed;
-      float rotation = Input.GetAxis("Horizontal") * rotationspeed;
-      translation *= Time.deltaTime;
-      Quaternion turn = Quaternion.Euler(0f, rotation, 0f);
-      rb.MovePosition(rb.position + this.transform.forward * translation);
-      rb.MoveRotation(rb.rotation * turn);
-    }
+         {
+            float translation = Input.GetAxis("Vertical") * speed;
+            float rotation = Input.GetAxis("Horizontal") * rotationspeed;
+            translation *= Time.deltaTime;
+            Quaternion turn = Quaternion.Euler(0f, rotation, 0f);
+            rb.MovePosition(rb.position + this.transform.forward * translation);
+            rb.MoveRotation(rb.rotation * turn);
+         }
    }
    private NetworkVariable<NetworkString> playerNameA = new NetworkVariable<NetworkString>(
       new NetworkString{ info = "Player"},
@@ -108,37 +111,36 @@ public class Movementscript : NetworkBehaviour
    }
    private void HandleKeyboardInput()
     {
-         // Debug.Log("funtion enter");
-        if (IsServer)
-        {
+         if (IsOwner)
+         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-               Debug.Log("Material change color");
-                ChangeMaterialColor();
+                  Debug.Log("Material change color");
+                  ChangeMaterialColor();
             }
-        }
+         }
     }
     private void ChangeMaterialColor()
     {
-        if (materialToChange != null)
-        {
-            if (isColorChanged)
+         if (materialToChange != null)
+         {
+            if (isColorChanged.Value)
             {
-                // If color is changed, return to white
-                materialToChange.color = Color.white;
+                  // If color is changed, return to white
+                  materialToChange.color = Color.white;
             }
             else
             {
-                // If color is not changed, change to blue
-                materialToChange.color = Color.red;
+                  // If color is not changed, change to blue
+                  materialToChange.color = Color.red;
             }
 
-            // Toggle the state
-            isColorChanged = !isColorChanged;
-        }
-        else
-        {
+            // Toggle the state and synchronize it across the network
+            isColorChanged.Value = !isColorChanged.Value;
+         }
+         else
+         {
             Debug.LogError("Material reference is null. Please assign a material to 'materialToChange'.");
-        }
+         }
     }
 }
