@@ -272,6 +272,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginmanager: {fileID: 0}
+  scripts:
+  - {fileID: 6894308727332089065}
+  - {fileID: -6680672962038274652}
 --- !u!1 &4132526220334921036
 GameObject:
   m_ObjectHideFlags: 0

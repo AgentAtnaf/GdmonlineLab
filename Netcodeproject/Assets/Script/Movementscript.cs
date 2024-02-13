@@ -184,4 +184,15 @@ public class Movementscript : NetworkBehaviour
             Debug.LogError("Material reference is null. Please assign a material to 'materialToChange'.");
         }
     }
+    private void Onenable()
+    {
+      if(namelabel != null)
+      namelabel.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+      if(namelabel != null)
+      namelabel.enabled = false;
+    }
 }
