@@ -35,11 +35,11 @@ public class Movementscript : NetworkBehaviour
             rb.MoveRotation(rb.rotation * turn);
          }
    }
-   private NetworkVariable<NetworkString> playerNameA = new NetworkVariable<NetworkString>(
+   public NetworkVariable<NetworkString> playerNameA = new NetworkVariable<NetworkString>(
       new NetworkString{ info = "Player"},
       NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Owner);
-   private NetworkVariable<NetworkString> playerNameB = new NetworkVariable<NetworkString>(
+   public NetworkVariable<NetworkString> playerNameB = new NetworkVariable<NetworkString>(
       new NetworkString{ info = "Player"},
       NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Owner);
@@ -99,11 +99,30 @@ public class Movementscript : NetworkBehaviour
         if(IsOwner)
         {
             posX.Value = (int)System.Math.Ceiling(transform.position.x);
+            if(Input.GetKeyDown(KeyCode.K))
+            {
+               TestserverRpc("KO", new ServerRpcParams());
+            }
+            if(Input.GetKeyDown(KeyCode.L))
+            {
+               ClientRpcSendParams clientRpcSendParams = new ClientRpcSendParams {TargetClientIds = new List<ulong>{1}};
+               ClientRpcParams clientRpcParams = new ClientRpcParams{ Send = clientRpcSendParams};
+               TestClientRpc("Ok", clientRpcParams);
+            }
         }
         Upadteplayerinfo();
         UpdateMaterialColor();
    }
-
+   [ClientRpc]
+   private void TestClientRpc(string msg, ClientRpcParams clientRpcParams)
+   {
+      Debug.Log("Msg from Server = " + msg);
+   }
+   [ServerRpc]
+   private void TestserverRpc(string msg, ServerRpcParams serverRpcParams)
+   {
+      Debug.Log("Test srever rpc from client = +" + OwnerClientId);
+   }
     private void UpdateMaterialColor()
     {
         if (materialToChange != null)
@@ -112,7 +131,7 @@ public class Movementscript : NetworkBehaviour
             materialToChange.color = materialColor.Value;
         }
         else
-        {
+        {   
             Debug.LogError("Material reference is null. Please assign a material to 'materialToChange'.");
         }
     }

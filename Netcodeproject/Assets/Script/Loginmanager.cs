@@ -19,6 +19,8 @@ public class Loginmanager : MonoBehaviour
     public GameObject loginpanel;
     public GameObject leavebutton;
 
+    public GameObject Scorepannel;
+
     [Command("set-approve")]
     public bool SetIsApproveConnection()
     {
@@ -35,6 +37,7 @@ public class Loginmanager : MonoBehaviour
         NetworkManager.Singleton.OnClientDisconnectCallback += HandleClientDisconnected;
         loginpanel.SetActive(true);
         leavebutton.SetActive(false);
+        Scorepannel.SetActive(false);
     }
 
     public void Leave()
@@ -51,6 +54,7 @@ public class Loginmanager : MonoBehaviour
         }
         loginpanel.SetActive(true);
         leavebutton.SetActive(false);
+        Scorepannel.SetActive(false);
     }
 
     private void OnDestroy()
@@ -73,6 +77,7 @@ public class Loginmanager : MonoBehaviour
         {
             loginpanel.SetActive(false);
             leavebutton.SetActive(true);
+            Scorepannel.SetActive(true);
         }
     }
 
@@ -192,7 +197,7 @@ public class Loginmanager : MonoBehaviour
         else
         {
             // Handle an invalid index if needed
-            Debug.LogError("Invalid dropdown index");
+            Debug.Log("Invalid dropdown index");
         }
     }
 
@@ -208,7 +213,7 @@ public class Loginmanager : MonoBehaviour
         return isPasswordApprove && isNameApprove;
     }
 
-    private void setSpawnLocation(ulong clientId, NetworkManager.ConnectionApprovalResponse response)
+    public void setSpawnLocation(ulong clientId, NetworkManager.ConnectionApprovalResponse response)
     {
         Vector3 spawnPos = Vector3.zero;
         Quaternion spawnRot = Quaternion.identity;

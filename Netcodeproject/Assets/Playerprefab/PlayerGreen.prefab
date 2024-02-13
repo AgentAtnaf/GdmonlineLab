@@ -120,6 +120,8 @@ GameObject:
   - component: {fileID: 6894308727332089065}
   - component: {fileID: 7800696426586607658}
   - component: {fileID: 4669872801936122374}
+  - component: {fileID: -6680672962038274652}
+  - component: {fileID: 5018510159071928925}
   m_Layer: 0
   m_Name: PlayerGreen
   m_TagString: Untagged
@@ -241,6 +243,35 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &-6680672962038274652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687697340185427215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f13b51cabe4f24996a6ea6d9949fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpP1:
+    m_InternalValue: 5
+  hpP2:
+    m_InternalValue: 5
+--- !u!114 &5018510159071928925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687697340185427215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a86a9758ab6ea49927ec289b54e368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loginmanager: {fileID: 0}
 --- !u!1 &4132526220334921036
 GameObject:
   m_ObjectHideFlags: 0
