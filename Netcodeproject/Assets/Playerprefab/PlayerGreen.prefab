@@ -122,9 +122,10 @@ GameObject:
   - component: {fileID: 4669872801936122374}
   - component: {fileID: -6680672962038274652}
   - component: {fileID: 5018510159071928925}
+  - component: {fileID: 2508934893432418507}
   m_Layer: 0
   m_Name: PlayerGreen
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2044945768
+  GlobalObjectIdHash: 350751263
   InScenePlacedSourceGlobalObjectIdHash: 2022834040
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -275,6 +276,19 @@ MonoBehaviour:
   scripts:
   - {fileID: 6894308727332089065}
   - {fileID: -6680672962038274652}
+--- !u!114 &2508934893432418507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687697340185427215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803f4b16f71193640980d2f3ef3fd810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombprefabs: {fileID: 6630556356628986039, guid: 2b6a6d6d56bc0574db5b7be93651f1f1, type: 3}
 --- !u!1 &4132526220334921036
 GameObject:
   m_ObjectHideFlags: 0
