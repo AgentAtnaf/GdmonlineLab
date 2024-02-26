@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2492473700912268263}
   - component: {fileID: 4790913915695713973}
   - component: {fileID: 3806697057875450248}
-  - component: {fileID: 6323048307891832699}
   m_Layer: 0
   m_Name: Bomb effect
   m_TagString: Untagged
@@ -4900,7 +4899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1072124458
+  GlobalObjectIdHash: 1182314338
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 0
@@ -4909,16 +4908,3 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &6323048307891832699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7841340877360640607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe2886d863e97942aab03b130e086d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 2

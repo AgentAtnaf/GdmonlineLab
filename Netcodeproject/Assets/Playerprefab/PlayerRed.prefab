@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: -8021874339553757373}
   - component: {fileID: 4393951341435698522}
   - component: {fileID: -2683995953667648893}
-  - component: {fileID: 1838637616236620970}
+  - component: {fileID: -3798617465132374933}
+  - component: {fileID: -8694744163261429506}
+  - component: {fileID: 6539718494792954676}
   m_Layer: 0
   m_Name: PlayerRed
   m_TagString: Player
@@ -52,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1217761731
+  GlobalObjectIdHash: 652044583
   InScenePlacedSourceGlobalObjectIdHash: 2180933773
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -169,7 +171,7 @@ MonoBehaviour:
   scripts:
   - {fileID: 2109902211503603402}
   - {fileID: 4393951341435698522}
---- !u!114 &1838637616236620970
+--- !u!114 &-3798617465132374933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,6 +184,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombprefabs: {fileID: 6630556356628986039, guid: 2b6a6d6d56bc0574db5b7be93651f1f1, type: 3}
+--- !u!114 &-8694744163261429506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988219180353810444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f512e84cb3d4e45b18640466b7080b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1080213484956932550, guid: 37c21ed8b5a3d43439a82709340bc4b7, type: 3}
+--- !u!136 &6539718494792954676
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988219180353810444}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2175034
+  m_Height: 3.1769261
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.5563352, z: 0.04534185}
 --- !u!1 &7064068637085885834
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,5 +69,16 @@ public class HPPlayerScript : NetworkBehaviour
                 hpP2.Value--;
             }
         }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            if (IsOwnedByServer)
+            {
+                hpP1.Value--;
+            }
+            else
+            {
+                hpP2.Value--;
+            }
+        }
     }
 }

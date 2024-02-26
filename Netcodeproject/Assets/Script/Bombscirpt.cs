@@ -9,7 +9,7 @@ public class Bombscirpt : NetworkBehaviour
     public GameObject effectPrefab;
     private void OnCollisionEnter(Collision other) {
         if(!IsOwner)return;
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Bullet")
         {
             ulong networkObjId = GetComponent<NetworkObject>().NetworkObjectId;
             SpawnEffect();
