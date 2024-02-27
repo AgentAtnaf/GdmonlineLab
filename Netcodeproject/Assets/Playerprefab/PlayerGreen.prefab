@@ -125,6 +125,8 @@ GameObject:
   - component: {fileID: -8647385530490563041}
   - component: {fileID: 4363161217181190297}
   - component: {fileID: 1006936452020789329}
+  - component: {fileID: -6016599834505255851}
+  - component: {fileID: -5998147416916904006}
   m_Layer: 0
   m_Name: PlayerGreen
   m_TagString: Player
@@ -278,6 +280,7 @@ MonoBehaviour:
   scripts:
   - {fileID: 6894308727332089065}
   - {fileID: -6680672962038274652}
+  - {fileID: -5998147416916904006}
 --- !u!114 &-8647385530490563041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +330,41 @@ CapsuleCollider:
   m_Height: 2.848453
   m_Direction: 1
   m_Center: {x: 0, y: 2.3545535, z: 0.04534185}
+--- !u!95 &-6016599834505255851
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687697340185427215}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5998147416916904006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687697340185427215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ce36df4a07b244f8341a31a0e4e6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  rotationSpeed: 10
 --- !u!1 &4132526220334921036
 GameObject:
   m_ObjectHideFlags: 0

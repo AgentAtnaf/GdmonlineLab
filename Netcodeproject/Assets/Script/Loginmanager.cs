@@ -169,7 +169,7 @@ public class Loginmanager : MonoBehaviour
         skinDropdown.ClearOptions();
 
         // Replace this with your actual dropdown options
-        List<string> dropdownOptions = new List<string> { "Red", "Green", "Blue" };
+        List<string> dropdownOptions = new List<string> { "Red", "Green", "Blue", "Skin" };
 
         // Add options to the dropdown
         skinDropdown.AddOptions(dropdownOptions);
@@ -180,6 +180,7 @@ public class Loginmanager : MonoBehaviour
         dropdownToPrefabHashMap.Add(0,1217761731);
         dropdownToPrefabHashMap.Add(1,2044945768);
         dropdownToPrefabHashMap.Add(2,1580094032);
+        dropdownToPrefabHashMap.Add(3,4120045818);
 
         // Add more mappings as needed
     }

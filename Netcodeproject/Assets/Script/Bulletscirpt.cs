@@ -34,7 +34,6 @@ public class BulletScript : NetworkBehaviour
         if (!IsOwner) return;
         if (other.gameObject.tag == "Player" )
         {
-            
             ulong networkObjId = GetComponent<NetworkObject>().NetworkObjectId;
             Debug.Log("Hit.");
             bulletSpawner.DestroyProjectileServerRpc(networkObjId);
