@@ -10,6 +10,7 @@ public class HPPlayerScript : NetworkBehaviour
     TMP_Text p1Text;
     TMP_Text p2Text;
     Movementscript mainPlayer;
+    private Ownernetworkanimation ownernetworkanimation;
     public NetworkVariable<int> hpP1 = new NetworkVariable<int>(5,
     NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
@@ -19,6 +20,7 @@ public class HPPlayerScript : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ownernetworkanimation = GetComponent<Ownernetworkanimation>();
         p1Text = GameObject.Find("P1HPText (TMP)").GetComponent<TMP_Text>();
         p2Text = GameObject.Find("P2HPText (TMP)").GetComponent<TMP_Text>();
         mainPlayer = GetComponent<Movementscript>();
@@ -63,10 +65,12 @@ public class HPPlayerScript : NetworkBehaviour
             if (IsOwnedByServer)
             {
                 hpP1.Value--;
+                ownernetworkanimation.SetTrigger("Leghit");
             }
             else
             {
                 hpP2.Value--;
+                ownernetworkanimation.SetTrigger("Leghit");
             }
         }
         if (collision.gameObject.tag == "Bullet")
@@ -74,10 +78,12 @@ public class HPPlayerScript : NetworkBehaviour
             if (IsOwnedByServer)
             {
                 hpP1.Value--;
+                ownernetworkanimation.SetTrigger("Leghit");
             }
             else
             {
                 hpP2.Value--;
+                ownernetworkanimation.SetTrigger("Leghit");
             }
         }
     }
