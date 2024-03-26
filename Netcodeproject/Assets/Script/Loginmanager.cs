@@ -4,9 +4,13 @@ using UnityEngine;
 using TMPro;
 using QFSW.QC;
 using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 
 public class Loginmanager : MonoBehaviour
 {
+    public string ipaddress;
+    public TMP_InputField ipfield;
+    UnityTransport transport;
     public TMP_InputField userNameInputField;
     public TMP_InputField SkinIDInputField;
     public TMP_InputField passwordInputField;
@@ -89,12 +93,18 @@ public class Loginmanager : MonoBehaviour
 
     }
 
-    public void Host()
+    public async void Host()
     {
+        // setIpaddress();
+        if(RelaymanagerScript.Instance.IsRelayEnabled)
+        {
+            Debug.Log("start host with relay");
+            await RelaymanagerScript.Instance.CreateRelay();
+        }
         hostPassword = passwordInputField.text;
-        NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
-        NetworkManager.Singleton.StartHost();
-        Debug.Log("start host " + hostPassword);
+            NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
+            NetworkManager.Singleton.StartHost();
+            Debug.Log("start host " + hostPassword);
     }
 
     private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
@@ -148,8 +158,14 @@ public class Loginmanager : MonoBehaviour
     }
 
 
-    public void Client()
+    public async void Client()
     {
+        // setIpaddress();
+        ipaddress = ipfield.GetComponent<TMP_InputField>().text;
+        if(RelaymanagerScript.Instance.IsRelayEnabled && !string.IsNullOrEmpty(ipaddress))
+        {
+            await RelaymanagerScript.Instance.JoinRelay(ipaddress);
+        }
         string userName = userNameInputField.text;
         string clientPassword = passwordInputField.text;
 
@@ -242,5 +258,11 @@ public class Loginmanager : MonoBehaviour
         }
         response.Position = spawnPos;
         response.Rotation = spawnRot;
+    }
+    private void setIpaddress()
+    {
+        transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+        ipaddress = ipfield.GetComponent<TMP_InputField>().text;
+        transport.ConnectionData.Address = ipaddress;
     }
 }
